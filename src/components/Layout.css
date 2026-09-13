@@ -1,0 +1,449 @@
+/* =====================================================
+   LAYOUT TER SENEGAL
+===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+.layout {
+  min-height: 100vh;
+  background: #f4f7f8;
+  color: #294a63;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.site-header {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+
+  min-height: 86px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 14px 28px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border-bottom: 2px solid #1c9b91;
+
+  box-shadow: 0 5px 20px rgba(41, 74, 99, 0.08);
+
+  position: relative;
+  z-index: 10;
+}
+
+
+/* =====================================================
+   LOGO + NOM
+===================================================== */
+
+.site-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  text-decoration: none;
+
+  color: #294a63;
+
+  transition: 0.25s ease;
+}
+
+.site-brand:hover {
+  transform: translateY(-1px);
+}
+
+
+/* IMAGE LOGO */
+
+.site-logo {
+  width: 72px;
+  height: 54px;
+
+  object-fit: cover;
+
+  border-radius: 9px;
+
+  display: block;
+
+  box-shadow: 0 4px 12px rgba(41, 74, 99, 0.15);
+}
+
+
+/* TEXTE LOGO */
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+.brand-title {
+  color: #167f79;
+
+  font-size: 23px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.3px;
+
+  line-height: 1.1;
+}
+
+.brand-subtitle {
+  margin-top: 4px;
+
+  color: #718096;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.4px;
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.site-nav {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+}
+
+
+/* LIENS */
+
+.nav-link {
+  position: relative;
+
+  padding: 9px 11px;
+
+  color: #294a63;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  border-radius: 8px;
+
+  transition: all 0.25s ease;
+}
+
+.nav-link:hover {
+  color: #167f79;
+
+  background: #f0fdfa;
+}
+
+
+/* PETITE LIGNE SOUS LE LIEN */
+
+.nav-link::after {
+  content: "";
+
+  position: absolute;
+
+  left: 11px;
+  right: 11px;
+
+  bottom: 4px;
+
+  height: 2px;
+
+  background: #1c9b91;
+
+  transform: scaleX(0);
+
+  transform-origin: center;
+
+  transition: transform 0.25s ease;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+
+/* =====================================================
+   BOUTON ACHETER
+===================================================== */
+
+.nav-achat {
+  background: linear-gradient(
+    135deg,
+    #167f79,
+    #1c9b91
+  );
+
+  color: white;
+
+  padding: 10px 16px;
+
+  font-weight: 600;
+
+  box-shadow: 0 5px 14px rgba(28, 155, 145, 0.22);
+}
+
+.nav-achat:hover {
+  color: white;
+
+  background: linear-gradient(
+    135deg,
+    #126c67,
+    #167f79
+  );
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 18px rgba(28, 155, 145, 0.3);
+}
+
+.nav-achat::after {
+  display: none;
+}
+
+
+/* =====================================================
+   UTILISATEUR CONNECTÉ
+===================================================== */
+
+.user-area {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-left: 8px;
+
+  padding-left: 13px;
+
+  border-left: 1px solid #dce5e8;
+}
+
+
+/* INFORMATIONS UTILISATEUR */
+
+.user-info {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  line-height: 1.2;
+}
+
+.user-name {
+  color: #294a63;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+.user-role {
+  margin-top: 3px;
+
+  color: #1c9b91;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.7px;
+}
+
+
+/* =====================================================
+   BOUTON DÉCONNEXION
+===================================================== */
+
+.logout-btn {
+  border: 1px solid #d9e2e5;
+
+  background: white;
+
+  color: #dc2626;
+
+  padding: 8px 13px;
+
+  border-radius: 8px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.logout-btn:hover {
+  background: #fef2f2;
+
+  border-color: #fecaca;
+
+  transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   CONTENU
+===================================================== */
+
+.site-main {
+  width: 100%;
+
+  max-width: 1180px;
+
+  margin: 0 auto;
+
+  padding: 30px 28px 50px;
+}
+
+
+/* =====================================================
+   RESPONSIVE TABLETTE
+===================================================== */
+
+@media (max-width: 1050px) {
+
+  .site-header {
+    padding: 14px 20px;
+  }
+
+  .site-nav {
+    gap: 3px;
+  }
+
+  .nav-link {
+    padding: 8px 8px;
+
+    font-size: 13px;
+  }
+
+  .site-main {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+
+/* =====================================================
+   RESPONSIVE MOBILE
+===================================================== */
+
+@media (max-width: 800px) {
+
+  .site-header {
+    flex-direction: column;
+
+    gap: 16px;
+
+    padding: 18px 20px;
+  }
+
+  .site-brand {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+  .site-nav {
+    width: 100%;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 5px;
+  }
+
+  .user-area {
+    border-left: none;
+
+    border-top: 1px solid #dce5e8;
+
+    margin-left: 0;
+
+    padding-left: 0;
+
+    padding-top: 8px;
+  }
+
+  .site-main {
+    padding: 25px 15px 40px;
+  }
+}
+
+
+/* =====================================================
+   PETIT MOBILE
+===================================================== */
+
+@media (max-width: 500px) {
+
+  .site-header {
+    padding: 15px;
+  }
+
+  .site-logo {
+    width: 62px;
+    height: 48px;
+  }
+
+  .brand-title {
+    font-size: 19px;
+  }
+
+  .brand-subtitle {
+    font-size: 10px;
+  }
+
+  .site-nav {
+    flex-direction: column;
+
+    width: 100%;
+  }
+
+  .nav-link {
+    width: 100%;
+
+    text-align: center;
+  }
+
+  .user-area {
+    width: 100%;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+  }
+
+  .user-info {
+    align-items: center;
+  }
+
+  .logout-btn {
+    padding: 9px 15px;
+  }
+}

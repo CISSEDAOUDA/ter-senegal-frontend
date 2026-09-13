@@ -1,0 +1,439 @@
+/* =========================================
+   PAGE CONNEXION - TER SENEGAL
+========================================= */
+
+.connexion-page {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 20px;
+
+  background: #f4f6f8;
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.connexion-container {
+  width: 100%;
+  max-width: 460px;
+}
+
+
+/* =========================================
+   CARTE
+========================================= */
+
+.connexion-card {
+  background: white;
+
+  border-radius: 28px;
+
+  overflow: hidden;
+
+  border: 1px solid #e2e8f0;
+
+  box-shadow:
+    0 20px 50px rgba(25, 50, 70, 0.18);
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.connexion-header {
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 42px 30px;
+
+  text-align: center;
+
+  background: linear-gradient(
+    135deg,
+    #294a63 0%,
+    #315872 65%,
+    #1c9b91 100%
+  );
+}
+
+
+/* CONTENU HEADER */
+
+.connexion-header-content {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* DECORATION */
+
+.connexion-decoration {
+  position: absolute;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.decoration-top {
+  width: 180px;
+  height: 180px;
+
+  top: -90px;
+  right: -70px;
+}
+
+.decoration-bottom {
+  width: 220px;
+  height: 220px;
+
+  bottom: -130px;
+  left: -100px;
+}
+
+
+/* =========================================
+   ICONE TRAIN
+========================================= */
+
+.connexion-icon {
+  width: 78px;
+  height: 78px;
+
+  margin: 0 auto 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 22px;
+
+  color: #75e5dd;
+
+  background: rgba(255, 255, 255, 0.10);
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+
+/* =========================================
+   TEXTES HEADER
+========================================= */
+
+.connexion-seter {
+  margin: 0 0 8px;
+
+  color: #75e5dd;
+
+  font-size: 11px;
+
+  font-weight: bold;
+
+  letter-spacing: 4px;
+}
+
+.connexion-header h1 {
+  margin: 0;
+
+  color: white;
+
+  font-size: 27px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+.connexion-subtitle {
+  margin: 10px 0 0;
+
+  color: #dce8ed;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   FORMULAIRE
+========================================= */
+
+.connexion-form {
+  padding: 35px 32px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 22px;
+}
+
+
+/* TITRE FORM */
+
+.form-title h2 {
+  margin: 0;
+
+  color: #29475e;
+
+  font-size: 25px;
+
+  font-weight: 600;
+}
+
+.form-title p {
+  margin: 7px 0 0;
+
+  color: #718096;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.form-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.form-group label {
+  color: #29475e;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+
+.input-container {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+
+  left: 15px;
+
+  color: #1c9b91;
+
+  pointer-events: none;
+}
+
+
+.input-container input {
+  width: 100%;
+
+  padding: 14px 16px 14px 48px;
+
+  border-radius: 12px;
+
+  border: 1px solid #dce3e8;
+
+  background: #f8fafb;
+
+  color: #29475e;
+
+  font-size: 15px;
+
+  outline: none;
+
+  transition: all 0.25s ease;
+}
+
+.input-container input::placeholder {
+  color: #a0aec0;
+}
+
+
+/* FOCUS */
+
+.input-container input:focus {
+  background: white;
+
+  border-color: #1c9b91;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(28, 155, 145, 0.12);
+}
+
+
+/* =========================================
+   MESSAGE ERREUR
+========================================= */
+
+.error-message {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 13px 15px;
+
+  border-radius: 12px;
+
+  color: #b42318;
+
+  background: #fff1f0;
+
+  border: 1px solid #ffcaca;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   BOUTON
+========================================= */
+
+.connexion-button {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  padding: 15px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  background: linear-gradient(
+    90deg,
+    #167f79,
+    #1c9b91
+  );
+
+  box-shadow:
+    0 8px 20px
+    rgba(28, 155, 145, 0.25);
+
+  transition: all 0.25s ease;
+}
+
+
+.connexion-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 25px
+    rgba(28, 155, 145, 0.35);
+}
+
+
+.connexion-button:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+
+/* =========================================
+   SPINNER
+========================================= */
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+/* =========================================
+   INSCRIPTION
+========================================= */
+
+.connexion-inscription {
+  margin-top: 25px;
+
+  text-align: center;
+}
+
+.connexion-inscription p {
+  margin: 0 0 7px;
+
+  color: #718096;
+
+  font-size: 14px;
+}
+
+.connexion-inscription a {
+  color: #167f79;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition: 0.2s;
+}
+
+.connexion-inscription a:hover {
+  color: #1c9b91;
+
+  text-decoration: underline;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 500px) {
+
+  .connexion-page {
+    padding: 25px 15px;
+  }
+
+  .connexion-header {
+    padding: 35px 20px;
+  }
+
+  .connexion-form {
+    padding: 28px 22px;
+  }
+
+  .connexion-header h1 {
+    font-size: 24px;
+  }
+
+}

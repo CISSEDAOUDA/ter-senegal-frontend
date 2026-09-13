@@ -1,0 +1,432 @@
+/* =========================================
+   TER SENEGAL - APPLICATION
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f4f7f8;
+  color: #294a63;
+}
+
+
+/* =========================================
+   ACCUEIL
+========================================= */
+
+.app-accueil {
+  min-height: calc(100vh - 100px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 50px 20px;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(28, 155, 145, 0.12),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #f4f7f8 0%,
+      #e7f2f2 100%
+    );
+}
+
+
+/* =========================================
+   CARTE ACCUEIL
+========================================= */
+
+.accueil-container {
+  width: 100%;
+  max-width: 1000px;
+
+  padding: 55px 50px;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 28px;
+
+  text-align: center;
+
+  box-shadow:
+    0 20px 60px rgba(41, 74, 99, 0.14);
+}
+
+
+/* =========================================
+   BADGE
+========================================= */
+
+.accueil-badge {
+  display: inline-flex;
+
+  padding: 8px 18px;
+
+  margin-bottom: 18px;
+
+  border-radius: 30px;
+
+  background: #e7f7f5;
+
+  color: #167f79;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+
+/* =========================================
+   ICONE TRAIN
+========================================= */
+
+.accueil-icon {
+  width: 75px;
+  height: 75px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 20px;
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0b6e4f,
+      #1c9b91
+    );
+
+  color: white;
+
+  font-size: 38px;
+
+  box-shadow:
+    0 10px 25px rgba(28, 155, 145, 0.25);
+}
+
+
+/* =========================================
+   TITRE
+========================================= */
+
+.accueil-container h1 {
+  margin: 0;
+
+  color: #294a63;
+
+  font-size: 44px;
+
+  font-weight: 750;
+
+  line-height: 1.2;
+}
+
+.accueil-container h1 span {
+  color: #1c9b91;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.accueil-description {
+  max-width: 650px;
+
+  margin: 20px auto 35px;
+
+  color: #718096;
+
+  font-size: 16px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.accueil-features {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 18px;
+
+  margin: 30px 0 35px;
+}
+
+
+.feature-card {
+  padding: 22px 18px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 18px;
+
+  transition: 0.25s;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 10px 25px rgba(41, 74, 99, 0.1);
+
+  border-color: #b9dedb;
+}
+
+
+.feature-icon {
+  font-size: 28px;
+
+  margin-bottom: 8px;
+}
+
+
+.feature-card h3 {
+  margin: 5px 0;
+
+  color: #294a63;
+
+  font-size: 16px;
+}
+
+
+.feature-card p {
+  margin: 0;
+
+  color: #718096;
+
+  font-size: 13px;
+}
+
+
+/* =========================================
+   BOUTONS
+========================================= */
+
+.accueil-actions {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 15px;
+}
+
+
+.accueil-actions a {
+  text-decoration: none;
+}
+
+
+/* CONNEXION */
+
+.btn-connexion {
+  border: none;
+
+  padding: 14px 30px;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #0b6e4f,
+      #1c9b91
+    );
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+
+  box-shadow:
+    0 8px 20px rgba(28, 155, 145, 0.25);
+}
+
+.btn-connexion:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 14px 30px rgba(28, 155, 145, 0.35);
+}
+
+
+/* INSCRIPTION */
+
+.btn-inscription {
+  padding: 12px 30px;
+
+  border-radius: 12px;
+
+  border: 2px solid #1c9b91;
+
+  background: white;
+
+  color: #167f79;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.btn-inscription:hover {
+  background: #eaf8f6;
+
+  transform: translateY(-3px);
+}
+
+
+/* =========================================
+   ROLE NON SUPPORTÉ
+========================================= */
+
+.role-non-supporte {
+  min-height: 70vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+
+.role-card {
+  max-width: 500px;
+
+  padding: 45px;
+
+  text-align: center;
+
+  background: white;
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 15px 45px rgba(41, 74, 99, 0.12);
+}
+
+
+.role-icon {
+  font-size: 45px;
+
+  margin-bottom: 15px;
+}
+
+
+.role-card h2 {
+  margin: 0 0 10px;
+}
+
+
+.role-card p {
+  color: #718096;
+
+  margin-bottom: 25px;
+}
+
+
+/* =========================================
+   404
+========================================= */
+
+.page-introuvable {
+  min-height: 70vh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+.page-introuvable span {
+  font-size: 90px;
+
+  font-weight: 800;
+
+  color: #1c9b91;
+}
+
+
+.page-introuvable h1 {
+  margin: 0;
+
+  color: #294a63;
+}
+
+
+.page-introuvable p {
+  color: #718096;
+
+  margin-bottom: 25px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 750px) {
+
+  .accueil-container {
+    padding: 40px 22px;
+  }
+
+  .accueil-container h1 {
+    font-size: 32px;
+  }
+
+  .accueil-features {
+    grid-template-columns: 1fr;
+  }
+
+  .accueil-actions {
+    flex-direction: column;
+  }
+
+  .accueil-actions a,
+  .btn-connexion,
+  .btn-inscription {
+    width: 100%;
+  }
+}

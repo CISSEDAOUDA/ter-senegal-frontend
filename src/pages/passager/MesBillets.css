@@ -1,0 +1,944 @@
+.mes-billets-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+
+/* HEADER */
+
+.billets-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 35px;
+}
+
+.billets-header h1 {
+  margin: 0;
+  color: #29475e;
+  font-size: 32px;
+}
+
+.billets-header p {
+  color: #718096;
+  margin-top: 8px;
+}
+
+
+/* BOUTON ACHETER */
+
+.acheter-btn {
+  background: #167f79;
+  color: white;
+
+  border: none;
+
+  padding: 13px 20px;
+
+  border-radius: 10px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.acheter-btn:hover {
+  background: #126b66;
+  transform: translateY(-2px);
+}
+
+
+/* LISTE */
+
+.billets-container {
+  display: grid;
+
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(450px, 1fr)
+  );
+
+  gap: 25px;
+}
+
+
+/* CARTE */
+
+.billet-card {
+  background: white;
+
+  border-radius: 18px;
+
+  padding: 25px;
+
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.08);
+
+  border: 1px solid #e2e8f0;
+
+  position: relative;
+}
+
+
+/* ROUTE */
+
+.billet-route {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 30px;
+}
+
+.label {
+  display: block;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  color: #94a3b8;
+
+  margin-bottom: 5px;
+}
+
+.billet-route h2 {
+  margin: 0;
+
+  color: #29475e;
+
+  font-size: 20px;
+}
+
+.arrow {
+  font-size: 30px;
+
+  color: #167f79;
+
+  font-weight: bold;
+}
+
+
+/* DETAILS */
+
+.billet-details {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 18px;
+
+  border-top:
+    1px solid #e2e8f0;
+
+  padding-top: 20px;
+}
+
+.billet-details div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.billet-details span {
+  font-size: 12px;
+
+  color: #718096;
+}
+
+.billet-details strong {
+  color: #29475e;
+
+  font-size: 15px;
+}
+
+
+/* STATUT */
+
+.status {
+  font-weight: bold;
+}
+
+.status.confirme {
+  color: #15803d;
+}
+
+.status.en_attente {
+  color: #d97706;
+}
+
+.status.annule {
+  color: #dc2626;
+}
+
+
+/* QR CODE */
+
+.qr-section {
+  margin-top: 25px;
+
+  padding-top: 20px;
+
+  border-top:
+    1px dashed #cbd5e1;
+
+  text-align: center;
+
+  color: #29475e;
+}
+
+.qr-section p {
+  margin-bottom: 4px;
+
+  color: #718096;
+
+  font-size: 12px;
+}
+
+
+/* SUPPRESSION */
+
+.supprimer-btn {
+  width: 100%;
+
+  margin-top: 20px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 12px;
+
+  border-radius: 10px;
+
+  border: 1px solid #fecaca;
+
+  background: #fff5f5;
+
+  color: #dc2626;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.supprimer-btn:hover {
+  background: #dc2626;
+
+  color: white;
+}
+
+.supprimer-btn:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+
+/* AUCUN BILLET */
+
+.empty-billet {
+  text-align: center;
+
+  background: white;
+
+  padding: 60px 20px;
+
+  border-radius: 18px;
+
+  border: 1px solid #e2e8f0;
+}
+
+.empty-icon {
+  font-size: 55px;
+
+  margin-bottom: 15px;
+}
+
+.empty-billet h2 {
+  color: #29475e;
+}
+
+.empty-billet p {
+  color: #718096;
+
+  margin-bottom: 25px;
+}
+
+
+/* LOADING */
+
+.loading {
+  text-align: center;
+
+  padding: 60px;
+
+  color: #167f79;
+
+  font-size: 18px;
+}
+
+
+/* ERROR */
+
+.error-message {
+  background: #fff5f5;
+
+  border: 1px solid #fecaca;
+
+  color: #dc2626;
+
+  padding: 15px;
+
+  border-radius: 10px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .billets-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 20px;
+  }
+
+  .billets-container {
+    grid-template-columns: 1fr;
+  }
+
+  .billet-card {
+    padding: 18px;
+  }
+
+  .billet-route h2 {
+    font-size: 16px;
+  }
+
+  .arrow {
+    font-size: 24px;
+  }
+
+}/* =========================================
+   PAGE
+========================================= */
+
+.mes-billets-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 25px;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.billets-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.billets-header h1 {
+  margin: 0;
+  font-size: 32px;
+  color: #29475e;
+}
+
+.billets-header p {
+  color: #718096;
+  margin-top: 8px;
+}
+
+
+/* =========================================
+   BOUTON ACHETER
+========================================= */
+
+.acheter-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #16827b;
+  color: white;
+
+  padding: 14px 22px;
+
+  border-radius: 10px;
+
+  text-decoration: none;
+
+  font-weight: 700;
+
+  transition: 0.25s;
+
+  cursor: pointer;
+}
+
+.acheter-btn:hover {
+  background: #0f6d67;
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+   GRILLE : 2 PAR 2
+========================================= */
+
+.billets-container {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 28px;
+
+  align-items: start;
+}
+
+
+/* =========================================
+   CARTE BILLET
+========================================= */
+
+.ticket-card {
+  position: relative;
+
+  background:
+    linear-gradient(
+      135deg,
+      #254966 0%,
+      #315d7b 60%,
+      #159b8e 100%
+    );
+
+  color: white;
+
+  border-radius: 26px;
+
+  padding: 28px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 15px 35px rgba(25, 58, 80, 0.25);
+
+  min-height: 470px;
+}
+
+
+/* =========================================
+   HAUT
+========================================= */
+
+.ticket-top {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+
+  margin-bottom: 24px;
+}
+
+.ticket-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-small {
+  color: #73e2d7;
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+
+  font-weight: 700;
+
+  margin-bottom: 6px;
+}
+
+.ticket-brand h2 {
+  margin: 0;
+
+  font-size: 20px;
+
+  letter-spacing: 1px;
+
+  color: white;
+}
+
+.ticket-brand p {
+  margin: 6px 0 0;
+
+  font-size: 12px;
+
+  color: #d4e1e8;
+}
+
+
+.train-icon {
+  width: 55px;
+  height: 55px;
+
+  border-radius: 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 24px;
+
+  background: rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================================
+   TRAJET
+========================================= */
+
+.trip-section {
+  background: rgba(255, 255, 255, 0.10);
+
+  border-radius: 20px;
+
+  padding: 18px;
+
+  display: grid;
+
+  grid-template-columns: 1fr 90px 1fr;
+
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.station {
+  display: flex;
+  flex-direction: column;
+}
+
+.station span {
+  color: #7be1d6;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  margin-bottom: 8px;
+}
+
+.station strong {
+  font-size: 20px;
+
+  color: white;
+}
+
+.station-arrivee {
+  text-align: right;
+}
+
+
+.trip-arrow {
+  text-align: center;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.trip-arrow span {
+  font-size: 28px;
+
+  color: #79ded4;
+}
+
+.trip-arrow small {
+  margin-top: 4px;
+
+  color: #7be1d6;
+
+  font-size: 10px;
+}
+
+
+/* =========================================
+   LIGNE POINTILLÉE
+========================================= */
+
+.ticket-divider {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  margin: 15px -28px 22px;
+}
+
+.dashed-line {
+  width: 100%;
+
+  border-top:
+    2px dashed rgba(255, 255, 255, 0.28);
+}
+
+.circle {
+  position: absolute;
+
+  width: 32px;
+  height: 32px;
+
+  background: #f4f7f8;
+
+  border-radius: 50%;
+}
+
+.circle.left {
+  left: -16px;
+}
+
+.circle.right {
+  right: -16px;
+}
+
+
+/* =========================================
+   INFORMATIONS
+========================================= */
+
+.ticket-info {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 15px;
+
+  margin-bottom: 22px;
+}
+
+.info-item {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.info-item span,
+.ticket-bottom-info span {
+  color: #78d8cf;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  margin-bottom: 7px;
+}
+
+.info-item strong {
+  color: white;
+
+  font-size: 16px;
+}
+
+
+/* =========================================
+   CLASSE / STATUT
+========================================= */
+
+.ticket-bottom-info {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-end;
+
+  margin-bottom: 20px;
+}
+
+.ticket-bottom-info > div {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.ticket-bottom-info strong {
+  color: white;
+
+  font-size: 14px;
+}
+
+.status-container {
+  text-align: right;
+}
+
+.status {
+  display: inline-block;
+
+  padding: 6px 12px;
+
+  border-radius: 20px;
+
+  font-size: 12px !important;
+}
+
+
+/* CONFIRME */
+
+.status.confirme {
+  background: rgba(28, 220, 160, 0.18);
+
+  color: #77f0c3;
+
+  border:
+    1px solid rgba(50, 220, 170, 0.25);
+}
+
+
+/* EN ATTENTE */
+
+.status.en_attente {
+  background: rgba(255, 190, 50, 0.18);
+
+  color: #ffd46b;
+}
+
+
+/* ANNULE */
+
+.status.annule {
+  background: rgba(255, 90, 90, 0.18);
+
+  color: #ff9a9a;
+}
+
+
+/* =========================================
+   QR SECTION
+========================================= */
+
+.qr-section {
+  background: #f8f8f8;
+
+  border-radius: 18px;
+
+  padding: 16px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  color: #29475e;
+}
+
+.qr-box {
+  background: white;
+
+  padding: 7px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.ticket-number {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.ticket-number span {
+  color: #8a97a3;
+
+  font-size: 10px;
+
+  letter-spacing: 1px;
+
+  margin-bottom: 6px;
+}
+
+.ticket-number strong {
+  font-size: 15px;
+
+  color: #29475e;
+}
+
+.ticket-number p {
+  margin: 8px 0 0;
+
+  color: #718096;
+
+  font-size: 11px;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================
+   SUPPRESSION
+========================================= */
+
+.supprimer-btn {
+  width: 100%;
+
+  margin-top: 15px;
+
+  padding: 10px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  background: rgba(220, 38, 38, 0.15);
+
+  border: 1px solid rgba(255, 150, 150, 0.4);
+
+  border-radius: 10px;
+
+  color: #ffb3b3;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.supprimer-btn:hover {
+  background: #dc2626;
+
+  color: white;
+}
+
+
+/* =========================================
+   AUCUN BILLET
+========================================= */
+
+.empty-billet {
+  text-align: center;
+
+  background: white;
+
+  padding: 60px 20px;
+
+  border-radius: 20px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.empty-icon {
+  font-size: 55px;
+
+  margin-bottom: 15px;
+}
+
+
+/* =========================================
+   CHARGEMENT / ERREUR
+========================================= */
+
+.loading {
+  text-align: center;
+
+  padding: 60px;
+
+  color: #16827b;
+
+  font-size: 18px;
+}
+
+.error-message {
+  background: #fff1f1;
+
+  color: #dc2626;
+
+  padding: 18px;
+
+  border-radius: 10px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 950px) {
+
+  .billets-container {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .mes-billets-page {
+    padding: 25px 15px;
+  }
+
+  .billets-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 18px;
+  }
+
+  .ticket-card {
+    padding: 20px;
+
+    border-radius: 22px;
+  }
+
+  .trip-section {
+    grid-template-columns: 1fr 60px 1fr;
+
+    padding: 14px;
+  }
+
+  .station strong {
+    font-size: 16px;
+  }
+
+  .ticket-divider {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+
+}

@@ -1,0 +1,421 @@
+/* =========================================
+   PAGE INSCRIPTION - TER SENEGAL
+========================================= */
+
+.inscription-page {
+  min-height: calc(100vh - 80px);
+  padding: 45px 20px 70px;
+
+  background: #f4f6f8;
+}
+
+
+/* CONTAINER */
+
+.inscription-container {
+  width: 100%;
+  max-width: 850px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.inscription-header {
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 40px;
+
+  text-align: center;
+
+  border-radius: 28px 28px 0 0;
+
+  background: linear-gradient(
+    135deg,
+    #294a63 0%,
+    #315872 65%,
+    #1c9b91 100%
+  );
+}
+
+.inscription-header-content {
+  position: relative;
+  z-index: 2;
+}
+
+
+.inscription-icon {
+  width: 75px;
+  height: 75px;
+
+  margin: 0 auto 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 20px;
+
+  color: #75e5dd;
+
+  background: rgba(255, 255, 255, 0.12);
+}
+
+
+.inscription-seter {
+  margin: 0 0 8px;
+
+  color: #75e5dd;
+
+  font-size: 11px;
+
+  font-weight: bold;
+
+  letter-spacing: 4px;
+}
+
+
+.inscription-header h1 {
+  margin: 0;
+
+  color: white;
+
+  font-size: 28px;
+
+  letter-spacing: 1px;
+}
+
+
+.inscription-header p:last-child {
+  margin: 10px 0 0;
+
+  color: #dce8ed;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   CARTE
+========================================= */
+
+.inscription-card {
+  padding: 40px;
+
+  background: white;
+
+  border-radius: 0 0 28px 28px;
+
+  border: 1px solid #e2e8f0;
+
+  box-shadow:
+    0 20px 50px rgba(25, 50, 70, 0.15);
+}
+
+
+/* =========================================
+   TITRE
+========================================= */
+
+.inscription-title {
+  margin-bottom: 30px;
+}
+
+
+.inscription-title h2 {
+  margin: 0;
+
+  color: #29475e;
+
+  font-size: 26px;
+}
+
+
+.inscription-title p {
+  margin: 8px 0 0;
+
+  color: #718096;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.inscription-form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+
+/* DEUX COLONNES */
+
+.form-row {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 20px;
+}
+
+
+/* GROUP */
+
+.form-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+
+.form-group label {
+  color: #29475e;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+
+.optional {
+  color: #94a3b8;
+
+  font-weight: normal;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.input-container {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+}
+
+
+.input-icon {
+  position: absolute;
+
+  left: 15px;
+
+  color: #1c9b91;
+
+  pointer-events: none;
+}
+
+
+.input-container input {
+  width: 100%;
+
+  padding: 14px 15px 14px 47px;
+
+  border: 1px solid #dce3e8;
+
+  border-radius: 12px;
+
+  background: #f8fafb;
+
+  color: #29475e;
+
+  font-size: 15px;
+
+  outline: none;
+
+  transition: 0.25s;
+}
+
+
+.input-container input:focus {
+  background: white;
+
+  border-color: #1c9b91;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(28, 155, 145, 0.12);
+}
+
+
+.input-container input::placeholder {
+  color: #a0aec0;
+}
+
+
+/* =========================================
+   ERREUR
+========================================= */
+
+.inscription-error {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 14px;
+
+  border-radius: 12px;
+
+  background: #fff1f0;
+
+  border: 1px solid #ffcaca;
+
+  color: #b42318;
+
+  font-size: 14px;
+
+  word-break: break-word;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.inscription-button {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  padding: 15px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  background: linear-gradient(
+    90deg,
+    #167f79,
+    #1c9b91
+  );
+
+  box-shadow:
+    0 8px 20px
+    rgba(28, 155, 145, 0.25);
+
+  transition: 0.25s;
+}
+
+
+.inscription-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 28px
+    rgba(28, 155, 145, 0.35);
+}
+
+
+.inscription-button:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+
+/* =========================================
+   LOGIN
+========================================= */
+
+.inscription-login {
+  margin-top: 30px;
+
+  text-align: center;
+
+  padding-top: 25px;
+
+  border-top: 1px solid #e2e8f0;
+}
+
+
+.inscription-login p {
+  margin: 0 0 8px;
+
+  color: #718096;
+
+  font-size: 14px;
+}
+
+
+.inscription-login a {
+  color: #167f79;
+
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+
+.inscription-login a:hover {
+  color: #1c9b91;
+
+  text-decoration: underline;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 700px) {
+
+  .inscription-page {
+    padding: 25px 15px 50px;
+  }
+
+  .inscription-header {
+    padding: 35px 20px;
+  }
+
+  .inscription-card {
+    padding: 30px 22px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@media (max-width: 450px) {
+
+  .inscription-header h1 {
+    font-size: 24px;
+  }
+
+  .inscription-title h2 {
+    font-size: 22px;
+  }
+
+}

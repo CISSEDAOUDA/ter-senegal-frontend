@@ -1,0 +1,965 @@
+/* =====================================================
+   CHEF DE TRAIN - SUPERVISION
+   TER SENEGAL
+===================================================== */
+
+.gestion-page {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 10px 0 50px;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.gestion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+
+  margin-bottom: 28px;
+}
+
+
+.gestion-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+
+.gestion-title-icon {
+  width: 60px;
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 17px;
+
+  background: linear-gradient(
+    135deg,
+    #167f79,
+    #1c9b91
+  );
+
+  color: white;
+
+  box-shadow:
+    0 8px 20px rgba(28, 155, 145, 0.22);
+}
+
+
+.gestion-small-title {
+  margin: 0 0 5px;
+
+  color: #1c9b91;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+
+.gestion-header h1 {
+  margin: 0;
+
+  color: #294a63;
+
+  font-size: 31px;
+
+  font-weight: 750;
+}
+
+
+.gestion-subtitle {
+  margin: 7px 0 0;
+
+  color: #718096;
+
+  font-size: 13px;
+}
+
+
+/* =====================================================
+   ACTUALISER
+===================================================== */
+
+.refresh-button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 11px 17px;
+
+  border: 1px solid #d9e2e7;
+
+  border-radius: 10px;
+
+  background: white;
+
+  color: #167f79;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+
+.refresh-button:hover {
+  background: #f1faf9;
+
+  border-color: #9ed4cf;
+}
+
+
+/* =====================================================
+   STATISTIQUES
+===================================================== */
+
+.stats-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 14px;
+
+  margin-bottom: 38px;
+}
+
+
+.stat-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 17px;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 15px;
+
+  box-shadow:
+    0 5px 18px rgba(41, 74, 99, 0.05);
+}
+
+
+.stat-icon {
+  width: 43px;
+  height: 43px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+}
+
+
+.stat-icon.total {
+  background: #e8f7f5;
+  color: #167f79;
+}
+
+
+.stat-icon.ouverte {
+  background: #fff7ed;
+  color: #b45309;
+}
+
+
+.stat-icon.encours {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+
+.stat-icon.resolue {
+  background: #ecfdf5;
+  color: #0b6e4f;
+}
+
+
+.stat-card div:last-child {
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+.stat-card span {
+  color: #94a3b8;
+
+  font-size: 11px;
+
+  font-weight: 600;
+}
+
+
+.stat-card strong {
+  margin-top: 2px;
+
+  color: #294a63;
+
+  font-size: 23px;
+}
+
+
+/* =====================================================
+   TITRE LISTE
+===================================================== */
+
+.liste-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+}
+
+
+.liste-header h2 {
+  margin: 0;
+
+  color: #294a63;
+
+  font-size: 23px;
+}
+
+
+.liste-count {
+  padding: 7px 12px;
+
+  border-radius: 20px;
+
+  background: #e8f7f5;
+
+  color: #167f79;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+
+/* =====================================================
+   LISTE
+===================================================== */
+
+.gestion-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+
+/* =====================================================
+   CARTE
+===================================================== */
+
+.gestion-card {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 16px;
+
+  padding: 20px;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 6px 20px rgba(41, 74, 99, 0.05);
+
+  transition: 0.2s ease;
+}
+
+
+.gestion-card:hover {
+  transform: translateY(-2px);
+
+  border-color: #b8dfdb;
+
+  box-shadow:
+    0 11px 27px rgba(41, 74, 99, 0.09);
+}
+
+
+/* =====================================================
+   ICÔNE
+===================================================== */
+
+.gestion-card-icon {
+  flex-shrink: 0;
+
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background: #e8f7f5;
+
+  color: #167f79;
+}
+
+
+/* =====================================================
+   CONTENU
+===================================================== */
+
+.gestion-card-content {
+  flex: 1;
+
+  min-width: 0;
+}
+
+
+/* TOP */
+
+.gestion-card-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 12px;
+}
+
+
+.passager-label {
+  margin: 0 0 2px;
+
+  color: #1c9b91;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+
+.gestion-card-top h3 {
+  margin: 0;
+
+  color: #294a63;
+
+  font-size: 16px;
+}
+
+
+/* =====================================================
+   STATUT
+===================================================== */
+
+.gestion-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 6px 11px;
+
+  border-radius: 20px;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+
+.gestion-status.ouverte {
+  background: #fff7ed;
+
+  color: #b45309;
+}
+
+
+.gestion-status.en-cours {
+  background: #eff6ff;
+
+  color: #2563eb;
+}
+
+
+.gestion-status.resolue {
+  background: #ecfdf5;
+
+  color: #0b6e4f;
+}
+
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
+.description-box {
+  padding: 13px 15px;
+
+  background: #f8fafb;
+
+  border-left: 3px solid #1c9b91;
+
+  border-radius: 0 9px 9px 0;
+
+  margin-bottom: 13px;
+}
+
+
+.description-box p {
+  margin: 0;
+
+  color: #475569;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+
+/* =====================================================
+   SERVICE
+===================================================== */
+
+.gestion-service {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 8px 11px;
+
+  border-radius: 9px;
+
+  background: #f4f7f8;
+
+  margin-bottom: 10px;
+}
+
+
+.service-icon {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: white;
+
+  color: #167f79;
+}
+
+
+.gestion-service div:last-child {
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+.gestion-service span {
+  color: #94a3b8;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.7px;
+}
+
+
+.gestion-service strong {
+  color: #475569;
+
+  font-size: 11px;
+
+  margin-top: 2px;
+}
+
+
+/* =====================================================
+   DATE
+===================================================== */
+
+.gestion-date {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+
+  margin-bottom: 15px;
+}
+
+
+/* =====================================================
+   ACTION
+===================================================== */
+
+.gestion-action {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding-top: 13px;
+
+  border-top: 1px solid #edf1f3;
+}
+
+
+.action-label {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  color: #64748b;
+
+  font-size: 11px;
+
+  font-weight: 600;
+}
+
+
+.status-select {
+  min-width: 190px;
+
+  height: 38px;
+
+  padding: 0 10px;
+
+  border-radius: 9px;
+
+  border: 1px solid #d9e2e7;
+
+  background: white;
+
+  color: #294a63;
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  outline: none;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+
+.status-select:focus {
+  border-color: #1c9b91;
+
+  box-shadow:
+    0 0 0 3px rgba(28, 155, 145, 0.1);
+}
+
+
+.status-select.ouverte {
+  color: #b45309;
+}
+
+
+.status-select.en-cours {
+  color: #2563eb;
+}
+
+
+.status-select.resolue {
+  color: #0b6e4f;
+}
+
+
+.status-select:disabled {
+  opacity: 0.6;
+
+  cursor: wait;
+}
+
+
+.updating {
+  color: #94a3b8;
+
+  font-size: 10px;
+}
+
+
+/* =====================================================
+   AUCUNE
+===================================================== */
+
+.empty-gestion {
+  padding: 60px 25px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 21px;
+
+  box-shadow:
+    0 10px 30px rgba(41, 74, 99, 0.06);
+}
+
+
+.empty-gestion-icon {
+  width: 82px;
+  height: 82px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #e8f7f5;
+
+  color: #1c9b91;
+
+  margin-bottom: 18px;
+}
+
+
+.empty-gestion h2 {
+  margin: 0;
+
+  color: #294a63;
+
+  font-size: 21px;
+}
+
+
+.empty-gestion p {
+  margin: 8px 0 0;
+
+  color: #718096;
+
+  font-size: 13px;
+}
+
+
+/* =====================================================
+   INFORMATION
+===================================================== */
+
+.chef-info {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 30px;
+
+  padding: 15px 18px;
+
+  background: #f4fafb;
+
+  border: 1px solid #dbe9ec;
+
+  border-radius: 13px;
+}
+
+
+.chef-info-icon {
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #dff3f0;
+
+  color: #167f79;
+}
+
+
+.chef-info strong {
+  color: #294a63;
+
+  font-size: 13px;
+}
+
+
+.chef-info p {
+  margin: 3px 0 0;
+
+  color: #718096;
+
+  font-size: 11px;
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.gestion-loading {
+  min-height: 400px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+.gestion-loading-icon {
+  width: 65px;
+  height: 65px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 17px;
+
+  background: #e8f7f5;
+
+  color: #1c9b91;
+
+  animation: gestion-spin 1.5s linear infinite;
+}
+
+
+.gestion-loading h2 {
+  margin: 17px 0 5px;
+
+  color: #294a63;
+
+  font-size: 19px;
+}
+
+
+.gestion-loading p {
+  margin: 0;
+
+  color: #94a3b8;
+
+  font-size: 12px;
+}
+
+
+@keyframes gestion-spin {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+/* =====================================================
+   ERREUR
+===================================================== */
+
+.gestion-error {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 18px;
+
+  background: #fef2f2;
+
+  border: 1px solid #fecaca;
+
+  border-radius: 14px;
+
+  color: #dc2626;
+}
+
+
+.gestion-error h2 {
+  margin: 0 0 3px;
+
+  font-size: 15px;
+}
+
+
+.gestion-error p {
+  margin: 0;
+
+  color: #b91c1c;
+
+  font-size: 12px;
+}
+
+
+.retry-button {
+  margin-left: auto;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 9px 13px;
+
+  border: 1px solid #fecaca;
+
+  border-radius: 8px;
+
+  background: white;
+
+  color: #dc2626;
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 800px) {
+
+  .gestion-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .refresh-button {
+    align-self: flex-start;
+  }
+
+  .stats-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .gestion-header h1 {
+    font-size: 26px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .liste-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+  .gestion-card {
+    padding: 15px;
+
+    gap: 11px;
+  }
+
+  .gestion-card-top {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .gestion-action {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .status-select {
+    width: 100%;
+  }
+
+  .chef-info {
+    align-items: flex-start;
+  }
+
+}

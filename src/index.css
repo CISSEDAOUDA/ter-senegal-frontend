@@ -1,0 +1,20 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: #f7f7f5; color: #1a1a1a; }
+input, select, button {
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+button {
+  background: #0b6e4f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px 16px;
+}
+button:hover { background: #095c41; }
+button:disabled { background: #999; cursor: not-allowed; }
+label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: 14px; }
+
+@import "tailwindcss";
