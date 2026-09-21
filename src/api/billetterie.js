@@ -1,7 +1,17 @@
 import api from "./client";
 
+export const listerGares = () =>
+  api.get("/billetterie/gares/").then((r) => r.data);
+
 export const listerVoyages = () =>
   api.get("/billetterie/voyages/").then((r) => r.data);
+
+export const rechercherVoyage = (gareEmbarquementId, gareDebarquementId, dateHeureSouhaitee) =>
+  api.post("/billetterie/voyages/rechercher/", {
+    gare_embarquement_id: gareEmbarquementId,
+    gare_debarquement_id: gareDebarquementId,
+    date_heure_souhaitee: dateHeureSouhaitee,
+  }).then((r) => r.data);
 
 export const listerSiegesDisponibles = (voyageId) =>
   api.get(`/billetterie/voyages/${voyageId}/sieges-disponibles/`).then((r) => r.data);
@@ -17,3 +27,6 @@ export const acheterBillet = (donnees) =>
 
 export const tarifActuel = () =>
   api.get("/billetterie/tarifs/actuel/").then((r) => r.data);
+
+export const listerStatistiques = () =>
+  api.get("/billetterie/statistiques/").then((r) => r.data);

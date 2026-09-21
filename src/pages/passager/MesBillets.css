@@ -1,416 +1,257 @@
-.mes-billets-page {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 40px 20px;
+/* =====================================================
+   MES BILLETS - TER SENEGAL
+===================================================== */
+
+.billets-page {
+  width: 100%;
+  min-height: calc(100vh - 80px);
+
+  padding: 35px 20px 60px;
+
+  background:
+    radial-gradient(
+      circle at 10% 0%,
+      rgba(28, 155, 145, 0.09),
+      transparent 30%
+    ),
+    #f4f7f8;
+
+  box-sizing: border-box;
 }
-
-
-/* HEADER */
-
-.billets-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin-bottom: 35px;
-}
-
-.billets-header h1 {
-  margin: 0;
-  color: #29475e;
-  font-size: 32px;
-}
-
-.billets-header p {
-  color: #718096;
-  margin-top: 8px;
-}
-
-
-/* BOUTON ACHETER */
-
-.acheter-btn {
-  background: #167f79;
-  color: white;
-
-  border: none;
-
-  padding: 13px 20px;
-
-  border-radius: 10px;
-
-  font-size: 15px;
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition: 0.2s;
-}
-
-.acheter-btn:hover {
-  background: #126b66;
-  transform: translateY(-2px);
-}
-
-
-/* LISTE */
 
 .billets-container {
-  display: grid;
-
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(450px, 1fr)
-  );
-
-  gap: 25px;
-}
-
-
-/* CARTE */
-
-.billet-card {
-  background: white;
-
-  border-radius: 18px;
-
-  padding: 25px;
-
-  box-shadow:
-    0 5px 20px rgba(0, 0, 0, 0.08);
-
-  border: 1px solid #e2e8f0;
-
-  position: relative;
-}
-
-
-/* ROUTE */
-
-.billet-route {
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  margin-bottom: 30px;
-}
-
-.label {
-  display: block;
-
-  font-size: 11px;
-
-  font-weight: 700;
-
-  color: #94a3b8;
-
-  margin-bottom: 5px;
-}
-
-.billet-route h2 {
-  margin: 0;
-
-  color: #29475e;
-
-  font-size: 20px;
-}
-
-.arrow {
-  font-size: 30px;
-
-  color: #167f79;
-
-  font-weight: bold;
-}
-
-
-/* DETAILS */
-
-.billet-details {
-  display: grid;
-
-  grid-template-columns:
-    repeat(2, 1fr);
-
-  gap: 18px;
-
-  border-top:
-    1px solid #e2e8f0;
-
-  padding-top: 20px;
-}
-
-.billet-details div {
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 5px;
-}
-
-.billet-details span {
-  font-size: 12px;
-
-  color: #718096;
-}
-
-.billet-details strong {
-  color: #29475e;
-
-  font-size: 15px;
-}
-
-
-/* STATUT */
-
-.status {
-  font-weight: bold;
-}
-
-.status.confirme {
-  color: #15803d;
-}
-
-.status.en_attente {
-  color: #d97706;
-}
-
-.status.annule {
-  color: #dc2626;
-}
-
-
-/* QR CODE */
-
-.qr-section {
-  margin-top: 25px;
-
-  padding-top: 20px;
-
-  border-top:
-    1px dashed #cbd5e1;
-
-  text-align: center;
-
-  color: #29475e;
-}
-
-.qr-section p {
-  margin-bottom: 4px;
-
-  color: #718096;
-
-  font-size: 12px;
-}
-
-
-/* SUPPRESSION */
-
-.supprimer-btn {
   width: 100%;
-
-  margin-top: 20px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  gap: 8px;
-
-  padding: 12px;
-
-  border-radius: 10px;
-
-  border: 1px solid #fecaca;
-
-  background: #fff5f5;
-
-  color: #dc2626;
-
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition: 0.2s;
-}
-
-.supprimer-btn:hover {
-  background: #dc2626;
-
-  color: white;
-}
-
-.supprimer-btn:disabled {
-  opacity: 0.6;
-
-  cursor: not-allowed;
-}
-
-
-/* AUCUN BILLET */
-
-.empty-billet {
-  text-align: center;
-
-  background: white;
-
-  padding: 60px 20px;
-
-  border-radius: 18px;
-
-  border: 1px solid #e2e8f0;
-}
-
-.empty-icon {
-  font-size: 55px;
-
-  margin-bottom: 15px;
-}
-
-.empty-billet h2 {
-  color: #29475e;
-}
-
-.empty-billet p {
-  color: #718096;
-
-  margin-bottom: 25px;
-}
-
-
-/* LOADING */
-
-.loading {
-  text-align: center;
-
-  padding: 60px;
-
-  color: #167f79;
-
-  font-size: 18px;
-}
-
-
-/* ERROR */
-
-.error-message {
-  background: #fff5f5;
-
-  border: 1px solid #fecaca;
-
-  color: #dc2626;
-
-  padding: 15px;
-
-  border-radius: 10px;
-}
-
-
-/* MOBILE */
-
-@media (max-width: 600px) {
-
-  .billets-header {
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    gap: 20px;
-  }
-
-  .billets-container {
-    grid-template-columns: 1fr;
-  }
-
-  .billet-card {
-    padding: 18px;
-  }
-
-  .billet-route h2 {
-    font-size: 16px;
-  }
-
-  .arrow {
-    font-size: 24px;
-  }
-
-}/* =========================================
-   PAGE
-========================================= */
-
-.mes-billets-page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 25px;
 }
 
 
-/* =========================================
+/* =====================================================
+   RETOUR
+===================================================== */
+
+.billets-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-bottom: 22px;
+
+  color: #167f79;
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  transition: 0.2s ease;
+}
+
+.billets-back:hover {
+  color: #105f5a;
+  transform: translateX(-3px);
+}
+
+
+/* =====================================================
    HEADER
-========================================= */
+===================================================== */
 
 .billets-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 35px;
+
+  gap: 25px;
+
+  margin-bottom: 28px;
+}
+
+.billets-title-area {
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+}
+
+.billets-title-icon {
+  width: 62px;
+  height: 62px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #254966,
+      #167f79,
+      #159b8e
+    );
+
+  color: white;
+
+  box-shadow:
+    0 12px 28px rgba(37, 73, 102, 0.22);
+}
+
+.billets-eyebrow {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #168b83;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
 }
 
 .billets-header h1 {
   margin: 0;
-  font-size: 32px;
+
   color: #29475e;
+
+  font-size: 32px;
+  font-weight: 800;
 }
 
 .billets-header p {
+  margin: 7px 0 0;
+
   color: #718096;
-  margin-top: 8px;
+
+  font-size: 14px;
 }
 
 
-/* =========================================
+/* =====================================================
    BOUTON ACHETER
-========================================= */
+===================================================== */
 
-.acheter-btn {
+.billets-buy-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  background: #16827b;
+  gap: 8px;
+
+  padding: 13px 20px;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #167f79,
+      #1c9b91
+    );
+
   color: white;
-
-  padding: 14px 22px;
-
-  border-radius: 10px;
 
   text-decoration: none;
 
+  font-size: 14px;
   font-weight: 700;
 
-  transition: 0.25s;
+  box-shadow:
+    0 8px 20px rgba(28, 155, 145, 0.22);
 
-  cursor: pointer;
+  transition: 0.25s ease;
 }
 
-.acheter-btn:hover {
-  background: #0f6d67;
+.billets-buy-button:hover {
   transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 25px rgba(28, 155, 145, 0.30);
 }
 
 
-/* =========================================
-   GRILLE : 2 PAR 2
-========================================= */
+/* =====================================================
+   RESUME
+===================================================== */
 
-.billets-container {
+.billets-summary {
   display: grid;
 
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+
+  margin-bottom: 25px;
+}
+
+.summary-card {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  padding: 14px 18px;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 15px;
+
+  box-shadow:
+    0 6px 20px rgba(41, 71, 94, 0.06);
+}
+
+.summary-icon {
+  width: 43px;
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: #e8f7f5;
+
+  color: #167f79;
+}
+
+.summary-card div:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-card strong {
+  color: #29475e;
+
+  font-size: 21px;
+
+  line-height: 1;
+}
+
+.summary-card span {
+  margin-top: 4px;
+
+  color: #718096;
+
+  font-size: 12px;
+}
+
+
+/* =====================================================
+   LISTE DES BILLETS
+===================================================== */
+
+.billets-list {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
 
   gap: 28px;
 
@@ -418,18 +259,20 @@
 }
 
 
-/* =========================================
+/* =====================================================
    CARTE BILLET
-========================================= */
+===================================================== */
 
-.ticket-card {
+.billet-card {
   position: relative;
+
+  overflow: hidden;
 
   background:
     linear-gradient(
       135deg,
       #254966 0%,
-      #315d7b 60%,
+      #315d7b 58%,
       #159b8e 100%
     );
 
@@ -437,283 +280,116 @@
 
   border-radius: 26px;
 
-  padding: 28px;
+  box-shadow:
+    0 15px 35px rgba(25, 58, 80, 0.24);
 
-  overflow: hidden;
+  min-height: 500px;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.billet-card:hover {
+  transform: translateY(-4px);
 
   box-shadow:
-    0 15px 35px rgba(25, 58, 80, 0.25);
-
-  min-height: 470px;
+    0 20px 42px rgba(25, 58, 80, 0.30);
 }
 
 
-/* =========================================
-   HAUT
-========================================= */
+/* =====================================================
+   BANDEAU SUPERIEUR
+===================================================== */
 
-.ticket-top {
+.billet-top {
   display: flex;
-
   justify-content: space-between;
-
   align-items: flex-start;
-
-  margin-bottom: 24px;
-}
-
-.ticket-brand {
-  display: flex;
-  flex-direction: column;
-}
-
-.brand-small {
-  color: #73e2d7;
-
-  font-size: 10px;
-
-  letter-spacing: 2px;
-
-  font-weight: 700;
-
-  margin-bottom: 6px;
-}
-
-.ticket-brand h2 {
-  margin: 0;
-
-  font-size: 20px;
-
-  letter-spacing: 1px;
-
-  color: white;
-}
-
-.ticket-brand p {
-  margin: 6px 0 0;
-
-  font-size: 12px;
-
-  color: #d4e1e8;
-}
-
-
-.train-icon {
-  width: 55px;
-  height: 55px;
-
-  border-radius: 18px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  font-size: 24px;
-
-  background: rgba(255, 255, 255, 0.12);
-}
-
-
-/* =========================================
-   TRAJET
-========================================= */
-
-.trip-section {
-  background: rgba(255, 255, 255, 0.10);
-
-  border-radius: 20px;
-
-  padding: 18px;
-
-  display: grid;
-
-  grid-template-columns: 1fr 90px 1fr;
-
-  align-items: center;
-
-  margin-bottom: 20px;
-}
-
-.station {
-  display: flex;
-  flex-direction: column;
-}
-
-.station span {
-  color: #7be1d6;
-
-  font-size: 10px;
-
-  font-weight: 700;
-
-  letter-spacing: 1px;
-
-  margin-bottom: 8px;
-}
-
-.station strong {
-  font-size: 20px;
-
-  color: white;
-}
-
-.station-arrivee {
-  text-align: right;
-}
-
-
-.trip-arrow {
-  text-align: center;
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-}
-
-.trip-arrow span {
-  font-size: 28px;
-
-  color: #79ded4;
-}
-
-.trip-arrow small {
-  margin-top: 4px;
-
-  color: #7be1d6;
-
-  font-size: 10px;
-}
-
-
-/* =========================================
-   LIGNE POINTILLÉE
-========================================= */
-
-.ticket-divider {
-  position: relative;
-
-  display: flex;
-
-  align-items: center;
-
-  margin: 15px -28px 22px;
-}
-
-.dashed-line {
-  width: 100%;
-
-  border-top:
-    2px dashed rgba(255, 255, 255, 0.28);
-}
-
-.circle {
-  position: absolute;
-
-  width: 32px;
-  height: 32px;
-
-  background: #f4f7f8;
-
-  border-radius: 50%;
-}
-
-.circle.left {
-  left: -16px;
-}
-
-.circle.right {
-  right: -16px;
-}
-
-
-/* =========================================
-   INFORMATIONS
-========================================= */
-
-.ticket-info {
-  display: grid;
-
-  grid-template-columns: repeat(3, 1fr);
 
   gap: 15px;
 
-  margin-bottom: 22px;
+  padding: 24px 26px 18px;
 }
 
-.info-item {
+.billet-number {
   display: flex;
+  align-items: center;
 
+  gap: 10px;
+}
+
+.billet-small-icon {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  color: #ffffff;
+}
+
+.billet-number div:last-child {
+  display: flex;
   flex-direction: column;
 }
 
-.info-item span,
-.ticket-bottom-info span {
+.billet-number span {
   color: #78d8cf;
 
-  font-size: 10px;
+  font-size: 9px;
+  font-weight: 800;
 
-  font-weight: 700;
+  letter-spacing: 1.6px;
 
-  letter-spacing: 1px;
-
-  margin-bottom: 7px;
+  text-transform: uppercase;
 }
 
-.info-item strong {
+.billet-number strong {
+  margin-top: 4px;
+
   color: white;
 
-  font-size: 16px;
+  font-size: 15px;
 }
 
 
-/* =========================================
-   CLASSE / STATUT
-========================================= */
+/* =====================================================
+   STATUT
+===================================================== */
 
-.ticket-bottom-info {
-  display: flex;
+.billet-status {
+  display: inline-flex;
+  align-items: center;
 
-  justify-content: space-between;
+  gap: 6px;
 
-  align-items: flex-end;
-
-  margin-bottom: 20px;
-}
-
-.ticket-bottom-info > div {
-  display: flex;
-
-  flex-direction: column;
-}
-
-.ticket-bottom-info strong {
-  color: white;
-
-  font-size: 14px;
-}
-
-.status-container {
-  text-align: right;
-}
-
-.status {
-  display: inline-block;
-
-  padding: 6px 12px;
+  padding: 7px 11px;
 
   border-radius: 20px;
 
-  font-size: 12px !important;
+  font-size: 11px;
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
 }
 
 
 /* CONFIRME */
 
-.status.confirme {
+.statut-confirme {
   background: rgba(28, 220, 160, 0.18);
 
   color: #77f0c3;
@@ -722,194 +398,631 @@
     1px solid rgba(50, 220, 170, 0.25);
 }
 
+.statut-confirme .status-dot {
+  background: #4ade80;
+
+  box-shadow:
+    0 0 0 3px rgba(74, 222, 128, 0.12);
+}
+
 
 /* EN ATTENTE */
 
-.status.en_attente {
+.statut-attente {
   background: rgba(255, 190, 50, 0.18);
 
   color: #ffd46b;
+
+  border:
+    1px solid rgba(255, 200, 70, 0.25);
+}
+
+.statut-attente .status-dot {
+  background: #fbbf24;
 }
 
 
 /* ANNULE */
 
-.status.annule {
+.statut-annule {
   background: rgba(255, 90, 90, 0.18);
 
   color: #ff9a9a;
+
+  border:
+    1px solid rgba(255, 100, 100, 0.25);
+}
+
+.statut-annule .status-dot {
+  background: #f87171;
 }
 
 
-/* =========================================
-   QR SECTION
-========================================= */
+/* =====================================================
+   CORPS DU BILLET
+===================================================== */
 
-.qr-section {
+.billet-body {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0 26px 22px;
+}
+
+
+/* =====================================================
+   QR CODE
+===================================================== */
+
+.billet-qr-section {
+  display: flex;
+  align-items: center;
+
+  gap: 17px;
+
+  padding: 14px;
+
+  margin-bottom: 20px;
+
   background: #f8f8f8;
 
   border-radius: 18px;
 
-  padding: 16px;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 16px;
-
   color: #29475e;
 }
 
-.qr-box {
-  background: white;
+.qr-wrapper {
+  width: 150px;
+  height: 150px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   padding: 7px;
 
-  display: flex;
+  box-sizing: border-box;
 
+  background: white;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.qr-wrapper svg {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.qr-label {
+  display: flex;
   align-items: center;
 
-  justify-content: center;
-}
-
-.ticket-number {
-  display: flex;
-
-  flex-direction: column;
-}
-
-.ticket-number span {
-  color: #8a97a3;
-
-  font-size: 10px;
-
-  letter-spacing: 1px;
-
-  margin-bottom: 6px;
-}
-
-.ticket-number strong {
-  font-size: 15px;
-
-  color: #29475e;
-}
-
-.ticket-number p {
-  margin: 8px 0 0;
+  gap: 6px;
 
   color: #718096;
 
   font-size: 11px;
+  font-weight: 600;
 
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 
-/* =========================================
-   SUPPRESSION
-========================================= */
+/* =====================================================
+   CONTENU PRINCIPAL
+===================================================== */
 
-.supprimer-btn {
+.billet-main {
   width: 100%;
+}
 
-  margin-top: 15px;
 
-  padding: 10px;
+/* =====================================================
+   TRAJET
+===================================================== */
 
-  display: flex;
+.trajet-section {
+  padding: 18px;
+
+  margin-bottom: 18px;
+
+  background: rgba(255, 255, 255, 0.10);
+
+  border-radius: 20px;
+}
+
+.section-label {
+  display: block;
+
+  margin-bottom: 15px;
+
+  color: #7be1d6;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+.trajet {
+  display: grid;
+
+  grid-template-columns:
+    minmax(90px, 1fr)
+    80px
+    minmax(90px, 1fr);
 
   align-items: center;
 
+  gap: 10px;
+}
+
+.gare {
+  display: flex;
+  flex-direction: column;
+}
+
+.gare-arrivee {
+  align-items: flex-end;
+
+  text-align: right;
+}
+
+.gare-label {
+  margin-bottom: 6px;
+
+  color: #7be1d6;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+}
+
+.gare strong {
+  color: white;
+
+  font-size: 18px;
+  font-weight: 800;
+
+  word-break: break-word;
+}
+
+
+/* =====================================================
+   LIGNE DU TRAJET
+===================================================== */
+
+.trajet-line {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+}
+
+.line-dot {
+  width: 8px;
+  height: 8px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #7be1d6;
+
+  box-shadow:
+    0 0 0 4px rgba(123, 225, 214, 0.10);
+}
+
+.line {
+  flex: 1;
+
+  height: 2px;
+
+  display: flex;
+  align-items: center;
   justify-content: center;
 
-  gap: 7px;
+  background:
+    rgba(255, 255, 255, 0.30);
 
-  background: rgba(220, 38, 38, 0.15);
+  color: #7be1d6;
+}
 
-  border: 1px solid rgba(255, 150, 150, 0.4);
 
-  border-radius: 10px;
+/* =====================================================
+   INFORMATIONS
+===================================================== */
+
+.billet-info-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
+
+  margin-bottom: 19px;
+}
+
+.info-box {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  min-width: 0;
+
+  padding: 12px;
+
+  background: rgba(255, 255, 255, 0.09);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.09);
+
+  border-radius: 12px;
+}
+
+.info-icon {
+  width: 32px;
+  height: 32px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.11);
+
+  color: #7be1d6;
+}
+
+.info-box div:last-child {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.info-box span {
+  color: #78d8cf;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.6px;
+}
+
+.info-box strong {
+  margin-top: 3px;
+
+  overflow: hidden;
+
+  color: white;
+
+  font-size: 13px;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.billet-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  padding: 14px 26px;
+
+  background: rgba(0, 0, 0, 0.13);
+
+  border-top:
+    1px dashed rgba(255, 255, 255, 0.22);
+}
+
+.purchase-date {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  color: #c8d7df;
+
+  font-size: 10px;
+}
+
+.delete-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  padding: 8px 12px;
+
+  border:
+    1px solid rgba(255, 150, 150, 0.40);
+
+  border-radius: 9px;
+
+  background:
+    rgba(220, 38, 38, 0.15);
 
   color: #ffb3b3;
 
+  font-size: 10px;
+  font-weight: 700;
+
   cursor: pointer;
 
-  transition: 0.2s;
+  transition: 0.2s ease;
 }
 
-.supprimer-btn:hover {
+.delete-button:hover:not(:disabled) {
   background: #dc2626;
 
   color: white;
+
+  border-color: #dc2626;
+}
+
+.delete-button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
 }
 
 
-/* =========================================
+/* =====================================================
    AUCUN BILLET
-========================================= */
+===================================================== */
 
-.empty-billet {
+.empty-billets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   text-align: center;
+
+  padding: 70px 25px;
 
   background: white;
 
-  padding: 60px 20px;
+  border-radius: 22px;
 
-  border-radius: 20px;
+  border: 1px solid #e2e8f0;
 
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 10px 30px rgba(41, 71, 94, 0.07);
 }
 
 .empty-icon {
-  font-size: 55px;
+  width: 88px;
+  height: 88px;
 
-  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 18px;
+
+  border-radius: 50%;
+
+  background: #e8f7f5;
+
+  color: #167f79;
 }
 
+.empty-billets h2 {
+  margin: 0;
 
-/* =========================================
-   CHARGEMENT / ERREUR
-========================================= */
+  color: #29475e;
 
-.loading {
-  text-align: center;
-
-  padding: 60px;
-
-  color: #16827b;
-
-  font-size: 18px;
+  font-size: 23px;
 }
 
-.error-message {
-  background: #fff1f1;
+.empty-billets p {
+  max-width: 480px;
 
-  color: #dc2626;
+  margin: 10px 0 24px;
 
-  padding: 18px;
+  color: #718096;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+.empty-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 12px 19px;
 
   border-radius: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #167f79,
+      #1c9b91
+    );
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition: 0.2s ease;
+}
+
+.empty-button:hover {
+  transform: translateY(-2px);
 }
 
 
-/* =========================================
-   RESPONSIVE
-========================================= */
+/* =====================================================
+   CHARGEMENT
+===================================================== */
 
-@media (max-width: 950px) {
+.billets-loading {
+  min-height: 450px;
 
-  .billets-container {
-    grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.loading-train {
+  width: 70px;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 20px;
+
+  background: #e8f7f5;
+
+  color: #167f79;
+
+  animation:
+    trainLoading 1.4s infinite ease-in-out;
+}
+
+.billets-loading h2 {
+  margin: 18px 0 5px;
+
+  color: #29475e;
+
+  font-size: 20px;
+}
+
+.billets-loading p {
+  margin: 0;
+
+  color: #718096;
+
+  font-size: 13px;
+}
+
+@keyframes trainLoading {
+
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateX(8px);
+    opacity: 0.65;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 
 }
 
 
-@media (max-width: 600px) {
+/* =====================================================
+   ERREUR
+===================================================== */
 
-  .mes-billets-page {
-    padding: 25px 15px;
+.billets-error {
+  max-width: 700px;
+
+  margin: 70px auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 20px;
+
+  border:
+    1px solid #fecaca;
+
+  border-radius: 15px;
+
+  background: #fef2f2;
+
+  color: #dc2626;
+}
+
+.billets-error h2 {
+  margin: 0 0 4px;
+
+  font-size: 16px;
+}
+
+.billets-error p {
+  margin: 0;
+
+  color: #b91c1c;
+
+  font-size: 13px;
+}
+
+
+/* =====================================================
+   TABLETTE
+===================================================== */
+
+@media (max-width: 950px) {
+
+  .billets-list {
+    grid-template-columns: 1fr;
+  }
+
+  .billet-card {
+    max-width: 700px;
+
+    width: 100%;
+
+    margin: 0 auto;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 650px) {
+
+  .billets-page {
+    padding: 25px 15px 40px;
   }
 
   .billets-header {
@@ -920,25 +1033,131 @@
     gap: 18px;
   }
 
-  .ticket-card {
-    padding: 20px;
+  .billets-buy-button {
+    width: 100%;
+  }
 
+  .billets-title-icon {
+    width: 52px;
+    height: 52px;
+
+    border-radius: 15px;
+  }
+
+  .billets-header h1 {
+    font-size: 27px;
+  }
+
+  .billets-header p {
+    font-size: 13px;
+  }
+
+  .billets-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .billet-card {
     border-radius: 22px;
   }
 
-  .trip-section {
-    grid-template-columns: 1fr 60px 1fr;
-
-    padding: 14px;
+  .billet-top {
+    padding: 20px 20px 16px;
   }
 
-  .station strong {
+  .billet-body {
+    padding: 0 20px 20px;
+  }
+
+  .billet-footer {
+    padding: 13px 20px;
+  }
+
+  .billet-qr-section {
+    flex-direction: column;
+
+    text-align: center;
+  }
+
+  .qr-wrapper {
+    width: 150px;
+    height: 150px;
+  }
+
+  .qr-label {
+    justify-content: center;
+  }
+
+  .trajet {
+    grid-template-columns:
+      1fr 60px 1fr;
+  }
+
+  .gare strong {
     font-size: 16px;
   }
 
-  .ticket-divider {
-    margin-left: -20px;
-    margin-right: -20px;
+  .billet-info-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+
+/* =====================================================
+   PETIT MOBILE
+===================================================== */
+
+@media (max-width: 430px) {
+
+  .billets-title-area {
+    align-items: flex-start;
+  }
+
+  .billets-header h1 {
+    font-size: 24px;
+  }
+
+  .billet-top {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .billet-status {
+    align-self: flex-start;
+  }
+
+  .trajet {
+    grid-template-columns: 1fr;
+  }
+
+  .gare,
+  .gare-arrivee {
+    align-items: center;
+
+    text-align: center;
+  }
+
+  .trajet-line {
+    width: 70px;
+
+    margin: 5px auto;
+
+    transform: rotate(90deg);
+  }
+
+  .billet-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .billet-footer {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .delete-button {
+    width: 100%;
   }
 
 }

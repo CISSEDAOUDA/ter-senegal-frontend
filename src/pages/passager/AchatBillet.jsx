@@ -1,18 +1,25 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  Train,
+  TrainFront,
   MapPin,
+  CalendarDays,
+  Clock3,
   Armchair,
   CreditCard,
-  Wallet,
+  Search,
   CheckCircle2,
   AlertCircle,
+  Smartphone,
+  ArrowRight,
   Ticket,
+  X,
+  UserRound,
 } from "lucide-react";
 
 import {
-  listerVoyages,
+  listerGares,
+  rechercherVoyage,
   listerSiegesDisponibles,
   acheterBillet,
   tarifActuel,
@@ -36,6 +43,11 @@ const COULEURS_APP = {
   WAVE: { fond: "#1dc8f2", texte: "#fff" },
 };
 
+
+/* =====================================================
+   ECRAN PAIEMENT
+===================================================== */
+
 function EcranPaiementSimule({
   methode,
   montant,
@@ -47,16 +59,19 @@ function EcranPaiementSimule({
 
   const couleurs =
     COULEURS_APP[methode] || {
-      fond: "#294a63",
+      fond: "#333",
       texte: "#fff",
     };
 
   const nomApp =
     methode === "WAVE" ? "Wave" : "Orange Money";
 
-  const montantAttendu = montant != null ? Number(montant) : null;
+  const montantAttendu =
+    montant != null ? Number(montant) : null;
+
   const montantValide =
-    montantAttendu != null && Number(montantSaisi) === montantAttendu;
+    montantAttendu != null &&
+    Number(montantSaisi) === montantAttendu;
 
   return (
     <div className="paiement-page">
@@ -67,75 +82,101 @@ function EcranPaiementSimule({
           className="paiement-header"
           style={{ background: couleurs.fond }}
         >
-          <Wallet size={42} />
+          <div className="paiement-app-icon">
+            <Smartphone size={30} />
+          </div>
 
           <h2>{nomApp}</h2>
 
-          <p>Paiement TER Sénégal</p>
+          <p>
+            Paiement sécurisé de votre billet TER Sénégal
+          </p>
         </div>
 
         <div className="paiement-content">
 
+          <div className="paiement-ter">
+            <TrainFront size={22} />
+            <span>TER SENEGAL</span>
+          </div>
+
           <p className="paiement-label">
-            Montant à envoyer (FCFA)
+            Montant à payer
           </p>
 
-          <input
-            type="number"
-            className="paiement-montant"
-            value={montantSaisi}
-            onChange={(e) => setMontantSaisi(e.target.value)}
-            placeholder={montantAttendu != null ? String(montantAttendu) : ""}
-            style={{
-              width: "100%",
-              border: "none",
-              textAlign: "center",
-              background: "transparent",
-              boxSizing: "border-box",
-            }}
-          />
-
-          {montantSaisi && !montantValide && (
-            <p style={{ color: "#dc2626", fontSize: 13, marginTop: 4 }}>
-              Le montant doit correspondre exactement au prix du billet
-              ({montantAttendu} FCFA).
-            </p>
-          )}
+          <div className="paiement-montant">
+            {montantAttendu != null
+              ? `${montantAttendu.toLocaleString("fr-FR")} FCFA`
+              : "—"}
+          </div>
 
           <div className="paiement-beneficiaire">
-
-            <Train size={22} />
+            <UserRound size={22} />
 
             <div>
               <small>Bénéficiaire</small>
               <strong>TER Sénégal</strong>
             </div>
-
           </div>
 
+          <label className="paiement-input-label">
+            Montant à envoyer
+
+            <div className="paiement-input-wrapper">
+              <input
+                type="number"
+                value={montantSaisi}
+                onChange={(e) =>
+                  setMontantSaisi(e.target.value)
+                }
+                placeholder={
+                  montantAttendu != null
+                    ? String(montantAttendu)
+                    : ""
+                }
+              />
+
+              <span>FCFA</span>
+            </div>
+          </label>
+
+          {montantSaisi && !montantValide && (
+            <div className="paiement-error">
+              <AlertCircle size={18} />
+
+              <span>
+                Le montant doit correspondre exactement
+                au prix du billet.
+              </span>
+            </div>
+          )}
+
           <button
-            className="paiement-confirm"
-            style={{ background: couleurs.fond, opacity: !montantValide ? 0.5 : 1 }}
             onClick={onConfirmer}
             disabled={enCours || !montantValide}
+            className="paiement-confirm"
+            style={{ background: couleurs.fond }}
           >
-            <CheckCircle2 size={20} />
-
-            {enCours
-              ? "Confirmation..."
-              : `Confirmer avec ${nomApp}`}
+            {enCours ? (
+              "Confirmation..."
+            ) : (
+              <>
+                Confirmer le paiement
+                <ArrowRight size={18} />
+              </>
+            )}
           </button>
 
           <button
-            className="paiement-annuler"
             onClick={onAnnuler}
             disabled={enCours}
+            className="paiement-annuler"
           >
+            <X size={17} />
             Annuler
           </button>
 
         </div>
-
       </div>
 
     </div>
@@ -143,10 +184,31 @@ function EcranPaiementSimule({
 }
 
 
+/* =====================================================
+   PAGE ACHAT
+===================================================== */
+
 export default function AchatBillet() {
 
-  const [voyages, setVoyages] = useState([]);
-  const [voyageId, setVoyageId] = useState("");
+  const [gares, setGares] = useState([]);
+
+  const [gareEmbarquementId, setGareEmbarquementId] =
+    useState("");
+
+  const [gareDebarquementId, setGareDebarquementId] =
+    useState("");
+
+  const [date, setDate] = useState("");
+  const [heure, setHeure] = useState("");
+
+  const [rechercheEnCours, setRechercheEnCours] =
+    useState(false);
+
+  const [erreurRecherche, setErreurRecherche] =
+    useState(null);
+
+  const [resultatRecherche, setResultatRecherche] =
+    useState(null);
 
   const [sieges, setSieges] = useState([]);
   const [siegeId, setSiegeId] = useState("");
@@ -154,88 +216,137 @@ export default function AchatBillet() {
   const [methode, setMethode] =
     useState(METHODES[0].value);
 
+  const [tarif, setTarif] = useState(null);
+
+  const [erreurTarif, setErreurTarif] =
+    useState(null);
+
   const [erreur, setErreur] = useState(null);
 
   const [confirmation, setConfirmation] =
     useState(null);
 
-  const [afficherAppPaiement,
-    setAfficherAppPaiement] =
+  const [afficherAppPaiement, setAfficherAppPaiement] =
     useState(false);
 
-  const [confirmationEnCours,
-    setConfirmationEnCours] =
+  const [confirmationEnCours, setConfirmationEnCours] =
     useState(false);
-
-  const [tarif, setTarif] = useState(null);
-
-  const [erreurTarif,
-    setErreurTarif] =
-    useState(null);
 
   const navigate = useNavigate();
 
 
+  /* =====================================================
+     CHARGEMENT
+  ===================================================== */
+
   useEffect(() => {
 
-    listerVoyages()
-      .then(setVoyages)
+    listerGares()
+      .then(setGares)
       .catch(() =>
-        setErreur(
-          "Impossible de charger les voyages."
+        setErreurRecherche(
+          "Impossible de charger les gares."
         )
       );
 
-
     tarifActuel()
       .then(setTarif)
-      .catch(() => {
+      .catch((err) => {
 
         setTarif(null);
 
         setErreurTarif(
-          "Impossible de récupérer le tarif."
+          `Impossible de récupérer le tarif (${
+            err.response?.status ||
+            "erreur réseau"
+          }).`
         );
-
       });
 
   }, []);
 
 
-  useEffect(() => {
+  /* =====================================================
+     RECHERCHE
+  ===================================================== */
 
-    if (!voyageId) {
+  async function handleRecherche(e) {
 
-      setSieges([]);
-      setSiegeId("");
+    e.preventDefault();
+
+    setErreurRecherche(null);
+    setResultatRecherche(null);
+    setSieges([]);
+    setSiegeId("");
+
+    if (
+      !gareEmbarquementId ||
+      !gareDebarquementId ||
+      !date ||
+      !heure
+    ) {
+      return;
+    }
+
+    if (
+      gareEmbarquementId === gareDebarquementId
+    ) {
+
+      setErreurRecherche(
+        "La gare de départ et d'arrivée doivent être différentes."
+      );
 
       return;
     }
 
+    setRechercheEnCours(true);
 
-    listerSiegesDisponibles(voyageId)
+    try {
 
-      .then((data) => {
+      const dateHeureSouhaitee =
+        `${date}T${heure}:00`;
 
-        setSieges(data);
+      const resultat =
+        await rechercherVoyage(
+          Number(gareEmbarquementId),
+          Number(gareDebarquementId),
+          dateHeureSouhaitee
+        );
 
-        setSiegeId("");
+      setResultatRecherche(resultat);
 
-      })
+      const listeSieges =
+        await listerSiegesDisponibles(
+          resultat.voyage.id
+        );
 
-      .catch(() => {
+      setSieges(listeSieges);
 
-        setSieges([]);
+    } catch (err) {
 
-      });
+      const details = err.response?.data;
 
-  }, [voyageId]);
+      setErreurRecherche(
+        details
+          ? JSON.stringify(details)
+          : "Erreur lors de la recherche du voyage."
+      );
 
+    } finally {
+
+      setRechercheEnCours(false);
+
+    }
+  }
+
+
+  /* =====================================================
+     ACHAT
+  ===================================================== */
 
   async function finaliserAchat() {
 
     setConfirmationEnCours(true);
-
     setErreur(null);
 
     try {
@@ -247,8 +358,14 @@ export default function AchatBillet() {
         passager_id:
           passagerInfo.profil_id,
 
-        voyage_id:
-          Number(voyageId),
+        gare_embarquement_id:
+          Number(gareEmbarquementId),
+
+        gare_debarquement_id:
+          Number(gareDebarquementId),
+
+        date_heure_souhaitee:
+          `${date}T${heure}:00`,
 
         siege_id:
           Number(siegeId),
@@ -258,34 +375,24 @@ export default function AchatBillet() {
 
       });
 
-
       setConfirmation(billet);
 
-    }
+    } catch (err) {
 
-    catch (err) {
-
-      const details =
-        err.response?.data;
+      const details = err.response?.data;
 
       setErreur(
-
         details
           ? JSON.stringify(details)
           : "Erreur lors de l'achat."
-
       );
 
-    }
-
-    finally {
+    } finally {
 
       setConfirmationEnCours(false);
-
       setAfficherAppPaiement(false);
 
     }
-
   }
 
 
@@ -301,41 +408,37 @@ export default function AchatBillet() {
 
       setAfficherAppPaiement(true);
 
-    }
-
-    else {
+    } else {
 
       finaliserAchat();
 
     }
-
   }
 
+
+  /* =====================================================
+     PAIEMENT MOBILE
+  ===================================================== */
 
   if (afficherAppPaiement) {
 
     return (
-
       <EcranPaiementSimule
-
         methode={methode}
-
         montant={tarif?.montant}
-
         enCours={confirmationEnCours}
-
         onConfirmer={finaliserAchat}
-
         onAnnuler={() =>
           setAfficherAppPaiement(false)
         }
-
       />
-
     );
-
   }
 
+
+  /* =====================================================
+     CONFIRMATION
+  ===================================================== */
 
   if (confirmation) {
 
@@ -346,56 +449,80 @@ export default function AchatBillet() {
         <div className="confirmation-card">
 
           <div className="confirmation-icon">
-
             <CheckCircle2 size={70} />
+          </div>
 
+          <div className="confirmation-badge">
+            <Ticket size={16} />
+            BILLET CONFIRMÉ
           </div>
 
           <h1>
-            Billet confirmé !
+            Votre voyage est confirmé !
           </h1>
 
           <p className="confirmation-text">
-
-            Votre réservation a été effectuée
-            avec succès.
-
+            Votre billet TER Sénégal a été
+            enregistré avec succès.
           </p>
+
+          <div className="confirmation-route">
+
+            <div>
+              <small>Départ</small>
+
+              <strong>
+                {confirmation.gare_embarquement?.nom}
+              </strong>
+            </div>
+
+            <ArrowRight size={24} />
+
+            <div>
+              <small>Arrivée</small>
+
+              <strong>
+                {confirmation.gare_debarquement?.nom}
+              </strong>
+            </div>
+
+          </div>
 
 
           <div className="confirmation-details">
 
             <div>
+              <span>Embarquement</span>
 
+              <strong>
+                {new Date(
+                  confirmation.heure_embarquement
+                ).toLocaleString("fr-FR")}
+              </strong>
+            </div>
+
+            <div>
               <span>Montant payé</span>
 
               <strong>
                 {confirmation.paiement?.montant} FCFA
               </strong>
-
             </div>
 
-
             <div>
-
               <span>Statut</span>
 
               <strong className="statut-confirme">
-
                 {confirmation.statut}
-
               </strong>
-
             </div>
 
             <div>
+              <span>QR Code</span>
 
-              <span>Acheté le</span>
-
-              <strong>
-                {new Date(confirmation.date_achat).toLocaleString("fr-FR")}
+              <strong className="qr-code-text">
+                {confirmation.qr_code}
               </strong>
-
             </div>
 
           </div>
@@ -407,21 +534,20 @@ export default function AchatBillet() {
               navigate("/passager/billets")
             }
           >
-
             <Ticket size={20} />
-
             Voir mes billets
-
           </button>
 
         </div>
 
       </div>
-
     );
-
   }
 
+
+  /* =====================================================
+     PAGE PRINCIPALE
+  ===================================================== */
 
   return (
 
@@ -430,18 +556,18 @@ export default function AchatBillet() {
       <div className="achat-container">
 
 
+        {/* HEADER */}
+
         <div className="achat-header">
 
           <div className="achat-header-icon">
-
-            <Train size={38} />
-
+            <TrainFront size={34} />
           </div>
 
           <div>
 
             <span className="achat-badge">
-              BILLETTERIE
+              TER SENEGAL
             </span>
 
             <h1>
@@ -449,7 +575,8 @@ export default function AchatBillet() {
             </h1>
 
             <p>
-              Réservez votre voyage en première classe.
+              Réservez votre voyage simplement
+              et rapidement.
             </p>
 
           </div>
@@ -457,219 +584,169 @@ export default function AchatBillet() {
         </div>
 
 
+        {/* CARTE RECHERCHE */}
+
         <div className="achat-card">
+
+          <div className="section-title">
+
+            <div className="section-icon">
+              <Search size={20} />
+            </div>
+
+            <div>
+              <h2>
+                Rechercher un voyage
+              </h2>
+
+              <p>
+                Choisissez votre trajet et votre horaire.
+              </p>
+            </div>
+
+          </div>
 
 
           <form
-            onSubmit={handleSubmit}
+            onSubmit={handleRecherche}
             className="achat-form"
           >
 
 
-            <div className="achat-group">
-
-              <label>
-
-                <MapPin size={18} />
-
-                Choisir votre voyage
-
-              </label>
+            <div className="form-grid">
 
 
-              <select
-                value={voyageId}
+              {/* DEPART */}
 
-                onChange={(e) =>
-                  setVoyageId(
-                    e.target.value
-                  )
-                }
+              <div className="achat-group">
 
-                required
-              >
+                <label>
+                  <MapPin size={17} />
+                  Gare de départ
+                </label>
 
-                <option value="">
-                  -- Choisir un voyage --
-                </option>
+                <select
+                  value={gareEmbarquementId}
+                  onChange={(e) =>
+                    setGareEmbarquementId(
+                      e.target.value
+                    )
+                  }
+                  required
+                >
 
-
-                {voyages.map((v) => (
-
-                  <option
-                    key={v.id}
-
-                    value={v.id}
-                  >
-
-                    {v.gare_depart?.nom}
-
-                    {" → "}
-
-                    {v.gare_arrivee?.nom}
-
-                    {" ("}
-
-                    {new Date(
-                      v.date_heure_depart
-                    ).toLocaleString(
-                      "fr-FR"
-                    )}
-
-                    {")"}
-
+                  <option value="">
+                    Choisir une gare
                   </option>
 
-                ))}
+                  {gares.map((g) => (
 
-              </select>
+                    <option
+                      key={g.id}
+                      value={g.id}
+                    >
+                      {g.nom}
+                    </option>
+
+                  ))}
+
+                </select>
+
+              </div>
+
+
+              {/* ARRIVEE */}
+
+              <div className="achat-group">
+
+                <label>
+                  <MapPin size={17} />
+                  Gare d'arrivée
+                </label>
+
+                <select
+                  value={gareDebarquementId}
+                  onChange={(e) =>
+                    setGareDebarquementId(
+                      e.target.value
+                    )
+                  }
+                  required
+                >
+
+                  <option value="">
+                    Choisir une gare
+                  </option>
+
+                  {gares.map((g) => (
+
+                    <option
+                      key={g.id}
+                      value={g.id}
+                    >
+                      {g.nom}
+                    </option>
+
+                  ))}
+
+                </select>
+
+              </div>
+
+
+              {/* DATE */}
+
+              <div className="achat-group">
+
+                <label>
+                  <CalendarDays size={17} />
+                  Date du voyage
+                </label>
+
+                <input
+                  type="date"
+                  value={date}
+                  onChange={(e) =>
+                    setDate(e.target.value)
+                  }
+                  required
+                />
+
+              </div>
+
+
+              {/* HEURE */}
+
+              <div className="achat-group">
+
+                <label>
+                  <Clock3 size={17} />
+                  Heure souhaitée
+                </label>
+
+                <input
+                  type="time"
+                  value={heure}
+                  onChange={(e) =>
+                    setHeure(e.target.value)
+                  }
+                  required
+                />
+
+              </div>
 
             </div>
 
 
-            <div className="achat-group">
+            {erreurRecherche && (
 
-              <label>
+              <div className="achat-error">
 
-                <Armchair size={18} />
-
-                Choisir votre siège
-
-              </label>
-
-
-              <select
-
-                value={siegeId}
-
-                onChange={(e) =>
-                  setSiegeId(
-                    e.target.value
-                  )
-                }
-
-                required
-
-                disabled={!voyageId}
-
-              >
-
-                <option value="">
-                  -- Choisir un siège --
-                </option>
-
-
-                {sieges.map((s) => (
-
-                  <option
-                    key={s.id}
-
-                    value={s.id}
-                  >
-
-                    Siège {s.numero}
-
-                  </option>
-
-                ))}
-
-              </select>
-
-            </div>
-
-
-            {voyageId &&
-              sieges.length === 0 && (
-
-                <div className="achat-warning">
-
-                  Aucun siège disponible pour
-                  ce voyage.
-
-                </div>
-
-              )}
-
-
-            {tarif && (
-
-              <div className="tarif-card">
+                <AlertCircle size={18} />
 
                 <span>
-                  Prix du billet
+                  {erreurRecherche}
                 </span>
-
-                <strong>
-                  {tarif.montant} FCFA
-                </strong>
-
-              </div>
-
-            )}
-
-
-            {erreurTarif && (
-
-              <div className="achat-error">
-
-                <AlertCircle size={20} />
-
-                {erreurTarif}
-
-              </div>
-
-            )}
-
-
-            <div className="achat-group">
-
-              <label>
-
-                <CreditCard size={18} />
-
-                Méthode de paiement
-
-              </label>
-
-
-              <select
-
-                value={methode}
-
-                onChange={(e) =>
-                  setMethode(
-                    e.target.value
-                  )
-                }
-
-              >
-
-                {METHODES.map((m) => (
-
-                  <option
-                    key={m.value}
-
-                    value={m.value}
-                  >
-
-                    {m.label}
-
-                  </option>
-
-                ))}
-
-              </select>
-
-            </div>
-
-
-            {erreur && (
-
-              <div className="achat-error">
-
-                <AlertCircle size={20} />
-
-                {erreur}
 
               </div>
 
@@ -677,20 +754,16 @@ export default function AchatBillet() {
 
 
             <button
-
               type="submit"
-
-              disabled={
-                !voyageId ||
-                !siegeId
-              }
-
-              className="acheter-button"
+              disabled={rechercheEnCours}
+              className="rechercher-button"
             >
 
-              <CreditCard size={20} />
+              <Search size={19} />
 
-              Payer et confirmer
+              {rechercheEnCours
+                ? "Recherche en cours..."
+                : "Rechercher un voyage"}
 
             </button>
 
@@ -698,10 +771,266 @@ export default function AchatBillet() {
 
         </div>
 
+
+        {/* RESULTAT */}
+
+        {resultatRecherche && (
+
+          <div className="resultat-card">
+
+            <div className="resultat-header">
+
+              <div className="resultat-icon">
+                <TrainFront size={22} />
+              </div>
+
+              <div>
+
+                <span>
+                  VOYAGE DISPONIBLE
+                </span>
+
+                <h2>
+                  {resultatRecherche.gare_embarquement.nom}
+                  <ArrowRight size={19} />
+                  {resultatRecherche.gare_debarquement.nom}
+                </h2>
+
+              </div>
+
+            </div>
+
+
+            <div className="resultat-infos">
+
+              <div>
+                <Clock3 size={19} />
+
+                <div>
+                  <small>Embarquement</small>
+
+                  <strong>
+                    {new Date(
+                      resultatRecherche.heure_embarquement
+                    ).toLocaleString("fr-FR")}
+                  </strong>
+                </div>
+              </div>
+
+              <div>
+                <Clock3 size={19} />
+
+                <div>
+                  <small>Débarquement</small>
+
+                  <strong>
+                    {new Date(
+                      resultatRecherche.heure_debarquement
+                    ).toLocaleString("fr-FR")}
+                  </strong>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        )}
+
+
+        {/* RESERVATION */}
+
+        {resultatRecherche && (
+
+          <div className="achat-card reservation-card">
+
+            <div className="section-title">
+
+              <div className="section-icon">
+                <Armchair size={20} />
+              </div>
+
+              <div>
+
+                <h2>
+                  Finaliser votre réservation
+                </h2>
+
+                <p>
+                  Sélectionnez votre siège et votre moyen de paiement.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <form
+              onSubmit={handleSubmit}
+              className="achat-form"
+            >
+
+
+              {/* SIEGE */}
+
+              <div className="achat-group">
+
+                <label>
+                  <Armchair size={17} />
+                  Choisissez votre siège
+                </label>
+
+                <select
+                  value={siegeId}
+                  onChange={(e) =>
+                    setSiegeId(e.target.value)
+                  }
+                  required
+                >
+
+                  <option value="">
+                    Choisir un siège
+                  </option>
+
+                  {sieges.map((s) => (
+
+                    <option
+                      key={s.id}
+                      value={s.id}
+                    >
+                      Siège {s.numero}
+                    </option>
+
+                  ))}
+
+                </select>
+
+                {sieges.length === 0 && (
+
+                  <div className="achat-warning">
+
+                    <AlertCircle size={18} />
+
+                    <span>
+                      Aucun siège disponible pour ce voyage.
+                    </span>
+
+                  </div>
+
+                )}
+
+              </div>
+
+
+              {/* TARIF */}
+
+              {tarif && (
+
+                <div className="tarif-card">
+
+                  <div>
+
+                    <span>
+                      Prix du billet
+                    </span>
+
+                    <strong>
+                      {Number(
+                        tarif.montant
+                      ).toLocaleString("fr-FR")} FCFA
+                    </strong>
+
+                  </div>
+
+                  <Ticket size={40} />
+
+                </div>
+
+              )}
+
+
+              {erreurTarif && (
+
+                <div className="achat-error">
+
+                  <AlertCircle size={18} />
+
+                  {erreurTarif}
+
+                </div>
+
+              )}
+
+
+              {/* PAIEMENT */}
+
+              <div className="achat-group">
+
+                <label>
+                  <CreditCard size={17} />
+                  Méthode de paiement
+                </label>
+
+                <select
+                  value={methode}
+                  onChange={(e) =>
+                    setMethode(e.target.value)
+                  }
+                >
+
+                  {METHODES.map((m) => (
+
+                    <option
+                      key={m.value}
+                      value={m.value}
+                    >
+                      {m.label}
+                    </option>
+
+                  ))}
+
+                </select>
+
+              </div>
+
+
+              {erreur && (
+
+                <div className="achat-error">
+
+                  <AlertCircle size={18} />
+
+                  <span>
+                    {erreur}
+                  </span>
+
+                </div>
+
+              )}
+
+
+              <button
+                type="submit"
+                disabled={!siegeId}
+                className="acheter-button"
+              >
+
+                <CreditCard size={20} />
+
+                Payer et confirmer
+
+                <ArrowRight size={19} />
+
+              </button>
+
+            </form>
+
+          </div>
+
+        )}
+
       </div>
 
     </div>
-
   );
-
 }
